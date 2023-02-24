@@ -12,7 +12,7 @@ module.exports = {
   theme: {
     extends: {},
     backgroundImage: {
-      space: "url('../public/auth.svg')",
+      space: "url('../public/background.svg')",
     },
     colors: {
       "vagrao-pink": "#f47477",
