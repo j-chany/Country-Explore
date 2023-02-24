@@ -11,8 +11,12 @@ module.exports = {
   ],
   theme: {
     extends: {},
+    backgroundImage: {
+      space: "url('../public/auth.svg')",
+    },
     colors: {
       "vagrao-pink": "#f47477",
+      "match-blue": "#3c3fa3",
       ...colors,
     },
   },
