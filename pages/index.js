@@ -15,7 +15,7 @@ export default function Home() {
 
       <main className={styles.home}>
         <Menu />
-        <Image src="/chatting.png" alt="Chat PNG" width={1000} height={500} />
+        <Image src="/chatting.png" alt="Chat PNG" width={1500} height={500} />
       </main>
     </>
   );

@@ -5,6 +5,7 @@ import styles from "../styles/hero.module.css";
 import InfoContainer from "./infoContainer";
 import { useForm } from "react-hook-form";
 import { countryCodes, getAllContries, CountryQuery } from "@/service/query";
+
 const Hero = () => {
   // initialize form variables
   const {
@@ -35,6 +36,11 @@ const Hero = () => {
 
   // state variable to store all country codes
   const [codes, setCodes] = useState(null);
+  // state variable to store the query data
+  const [queryData, setQueryData] = useState("");
+  // if error, we will print an error message
+  const [error, setError] = useState(false);
+
   // query for every country code and name and store all of it in codes variable
   useEffect(() => {
     client
@@ -45,8 +51,12 @@ const Hero = () => {
       .catch((e) => console.error(e));
   }, []);
 
-  // state variable to store the query data
-  const [queryData, setQueryData] = useState("");
+  // show error message for only 3.5s
+  useEffect(() => {
+    setTimeout(() => {
+      setError(false);
+    }, 3500);
+  }, [error]);
 
   const handleSearch = (data) => {
     // If user inputs 2 letter, we assum its country code so we capitlize it else we will cap only first letter
@@ -60,9 +70,7 @@ const Hero = () => {
     }
     if (!(cleanData in codes) && !Object.values(codes).includes(cleanData)) {
       // return error if the input is not a valid code or country name
-      console.log(Object.values(codes).includes(cleanData));
-      console.log(cleanData);
-      console.log(Object.values(codes));
+      setError(true);
     } else if (Object.values(codes).includes(cleanData)) {
       // if user have entered a code we will query for the data
       console.log("ENTERED CODE");
@@ -116,9 +124,24 @@ const Hero = () => {
           <i className="text-2xl fa-solid fa-magnifying-glass duration-300 hover:text-3xl "></i>
         </button>
       </form>
+      {errors.country?.type === "required" && (
+        <p className="text-2xl text-vagrao-pink animate-pulse " role="alert">
+          Email is required!
+        </p>
+      )}
+      {error && (
+        <div className="text-2xl text-vagrao-pink animate-pulse ">
+          {" "}
+          Please enter valid country code or check your spelling{" "}
+        </div>
+      )}
       <InfoContainer queryData={queryData} />
-      
-      {queryData && <div>{codes.Andorra}</div>}
+
+      {queryData && (
+        <div>
+          {queryData.emoji} {queryData.emojiU}
+        </div>
+      )}
     </div>
   );
 };

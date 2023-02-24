@@ -12,7 +12,7 @@ const Menu = () => {
   };
 
   return (
-    <main className="flex justify-center">
+    <main className="flex justify-center mt-10 ">
       <div className={styles.menu}>
         <h1 className="text-3xl font-bold">
           Get to Know the World: Explore Countries with Us!
