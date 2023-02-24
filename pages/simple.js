@@ -2,10 +2,8 @@ import Hero from "@/components/Hero";
 
 export default function West() {
   return (
-    <>
-      <main>
-        <Hero />
-      </main>
-    </>
+    <div className="flex justify-center items-center h-screen	">
+      <Hero />
+    </div>
   );
 }

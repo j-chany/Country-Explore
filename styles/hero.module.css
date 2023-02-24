@@ -1,6 +1,14 @@
 
 .hero {
   display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: white;
+  box-shadow: 10px 5px 10px rgba(0, 0, 0, 0.1);
+  border-radius: 1rem;
+  padding: 2rem;
+  width:50%; 
+  height:80%; 
 }
 
 .layout1 {
@@ -8,7 +16,7 @@
 }
 
 .layout2 {
-  background-color: red;
+  background-color: pink;
 }
 
 .layout3 {
