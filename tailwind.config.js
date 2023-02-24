@@ -1,4 +1,7 @@
 /** @type {import('tailwindcss').Config} */
+// tailwind default colors
+const colors = require("tailwindcss/colors");
+
 module.exports = {
   content: [
     "./app/**/*.{js,ts,jsx,tsx}",
@@ -7,7 +10,11 @@ module.exports = {
     ,
   ],
   theme: {
-    extend: {},
+    extends: {},
+    colors: {
+      "vagrao-pink": "#f47477",
+      ...colors,
+    },
   },
   plugins: [],
 };
