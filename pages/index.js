@@ -1,7 +1,8 @@
 import Head from "next/head";
 import styles from "@/styles/home.module.css";
 import Link from "next/link";
-
+import Menu from "@/components/Menu";
+import Image from "next/image";
 export default function Home() {
   return (
     <>
@@ -12,48 +13,9 @@ export default function Home() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
-      <main className="flex justify-center">
-        <div className={styles.home}>
-          <h1 className="text-3xl font-bold">
-            Get to Know the World: Explore Countries with Us!
-          </h1>
-
-          <div className="my-8 text-xl">
-            Customize Your Layout: Choose Your Preferred Style
-          </div>
-          <div className="relative">
-            <button className="px-4 py-2 rounded-lg bg-gray-200 font-medium duration-300 hover:bg-gray-300 ">
-              Choose a page
-              <i className="mx-2 fa-solid fa-caret-down"></i>
-            </button>
-            <ul className="absolute z-10 top-full left-0 bg-white border border-gray-300 rounded-lg shadow-lg mt-2">
-              <li className="hover:bg-gray-100">
-                <Link
-                  className="block px-4 py-2 hover:text-gray-800"
-                  href="/regular"
-                >
-                  Regular
-                </Link>
-              </li>
-              <li className="hover:bg-gray-100">
-                <Link
-                  className="block px-4 py-2 hover:text-gray-800"
-                  href="/simple"
-                >
-                  Simple
-                </Link>
-              </li>
-              <li className="hover:bg-gray-100">
-                <Link
-                  className="block px-4 py-2 hover:text-gray-800"
-                  href="/regular"
-                >
-                  Compact
-                </Link>
-              </li>
-            </ul>
-          </div>
-        </div>
+      <main className={styles.home}>
+        <Menu />
+        <Image src="/chatting.png" alt="Chat PNG" width={1000} height={500} />
       </main>
     </>
   );
