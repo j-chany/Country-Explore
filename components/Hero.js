@@ -64,17 +64,21 @@ const Hero = () => {
     if (data.country.length == 2) {
       cleanData = data.country.toUpperCase();
     } else {
-      cleanData =
-        data.country.charAt(0).toUpperCase() +
-        data.country.substring(0).slice(1).toLowerCase();
+      // edge case is 'Hong Kong' where its split into 2 words
+      let cleaning = data.country.split(" ");
+      cleaning = cleaning
+        .map(
+          (el) =>
+            el.charAt(0).toUpperCase() + el.substring(0).slice(1).toLowerCase()
+        )
+        .join(" ");
+      cleanData = cleaning;
     }
     if (!(cleanData in codes) && !Object.values(codes).includes(cleanData)) {
       // return error if the input is not a valid code or country name
       setError(true);
     } else if (Object.values(codes).includes(cleanData)) {
       // if user have entered a code we will query for the data
-      console.log("ENTERED CODE");
-      console.log(cleanData);
       const variables = {
         code: cleanData,
       };
@@ -89,20 +93,19 @@ const Hero = () => {
       };
       client
         .request(CountryQuery, variables)
-        .then((data) => console.log(data.country));
+        .then((data) => setQueryData(data.country));
     }
+    reset();
   };
 
   return (
     <div className={`${styles.hero} ${getLayout()}`}>
       <div className="flex text-3xl text-white justify-between items-center w-full">
-        <h1>
-          {router.pathname.substring(1).charAt(0).toUpperCase() +
-            router.pathname.substring(1).slice(1)}{" "}
-          View
+        <h1 className="font-extrabold text-white">
+          Learn Something New Everyday!
         </h1>
         <button type="button" onClick={() => router.push("/")}>
-          <i className="fa-solid fa-xmark duration-300 hover:scale-125"></i>
+          <i className="fa-solid fa-xmark duration-300 hover:scale-150 hover:text-red-600"></i>
         </button>
       </div>
 
@@ -119,7 +122,7 @@ const Hero = () => {
         ></input>
         <button
           type="submit"
-          className="w-fit px-4 text-base font-bold   bg-pink-700 "
+          className="w-fit px-4 text-base font-bold bg-pink-700  "
         >
           <i className="text-2xl fa-solid fa-magnifying-glass duration-300 hover:text-3xl "></i>
         </button>
@@ -135,13 +138,7 @@ const Hero = () => {
           Please enter valid country code or check your spelling{" "}
         </div>
       )}
-      <InfoContainer queryData={queryData} />
-
-      {queryData && (
-        <div>
-          {queryData.emoji} {queryData.emojiU}
-        </div>
-      )}
+      {queryData && <InfoContainer queryData={queryData} />}
     </div>
   );
 };
