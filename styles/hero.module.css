@@ -23,8 +23,9 @@
   color: black;
   display: flex;
   flex-direction: column;
-
-  width: 80%;
+  align-items: center;
+  /* justify-content: center; */
+  width: 50%;
   height: 500px;
   margin: 0 auto;
 }
@@ -38,10 +39,4 @@
   width:80%; 
   height:75%;
 }
- .layout3 form button {
-  background-color: rgb(58, 238, 35) !important;
- }
- .layout3 form  input{
-  background-color: rgb(169, 239, 255) !important;
- }
 
