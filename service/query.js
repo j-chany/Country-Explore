@@ -8,6 +8,9 @@ query CountryByCode($code: ID!) {
     }
     name
     code
+    states {
+      name
+    }
   }
 }
 `;

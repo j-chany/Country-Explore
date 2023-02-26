@@ -5,6 +5,7 @@ import styles from "../styles/hero.module.css";
 import InfoContainer from "./infoContainer";
 import { useForm } from "react-hook-form";
 import { countryCodes, getAllContries, CountryQuery } from "@/service/query";
+import { getLayout } from "@/service/utils";
 
 const Hero = () => {
   // initialize form variables
@@ -16,20 +17,7 @@ const Hero = () => {
   } = useForm();
   // set up Nextjs router
   const router = useRouter();
-  // dynamic render layouts/color base on 3 unique page routes
-  const getLayout = () => {
-    switch (router.pathname) {
-      case "/regular":
-        return styles.layout1;
-      case "/simple":
-        return styles.layout2;
-      case "/color":
-        return styles.layout3;
 
-      default:
-        return styles.layout1;
-    }
-  };
   // configure endpoint for GraphQL
   const endpoint = "https://countries.trevorblades.com/graphql";
   const client = new GraphQLClient(endpoint);
@@ -103,9 +91,9 @@ const Hero = () => {
   };
 
   return (
-    <div className={`${styles.hero} ${getLayout()}`}>
-      <div className="flex text-3xl  justify-between items-center w-full">
-        <h1 className="font-extrabold">Learn Something New Everyday!</h1>
+    <div className={`${styles.hero} ${getLayout(router, styles)}`}>
+      <div className="flex text-sm md:text-2xl lg:text-5xl justify-between items-center w-full">
+        <h1 className="font-bold w-full">Learn Something New Everyday!</h1>
         <button type="button" onClick={() => router.push("/")}>
           <i className="fa-solid fa-xmark duration-300 hover:scale-150 hover:text-red-600"></i>
         </button>
@@ -118,7 +106,7 @@ const Hero = () => {
         <input
           type="text"
           placeholder="Select a country!"
-          className="text-slate-900 text-base sm:text-3xl outline-none p-3 flex-1"
+          className="text-slate-900 text-base md:text-3xl lg:text-4xl text-sm outline-none p-3 flex-1 w-full"
           {...register("country", { required: true })}
           aria-invalid={errors.country ? "true" : "false"}
         ></input>
@@ -131,7 +119,7 @@ const Hero = () => {
       </form>
       {errors.country?.type === "required" && (
         <p className="text-2xl text-vagrao-pink animate-pulse " role="alert">
-          Email is required!
+          We need something to work with
         </p>
       )}
       {error && (
@@ -140,7 +128,7 @@ const Hero = () => {
           Please enter valid country code or check your spelling{" "}
         </div>
       )}
-      {queryData && <InfoContainer queryData={queryData} />}
+      {queryData && <InfoContainer router={router} queryData={queryData} />}
     </div>
   );
 };
