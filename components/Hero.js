@@ -23,7 +23,7 @@ const Hero = () => {
         return styles.layout1;
       case "/simple":
         return styles.layout2;
-      case "/compact":
+      case "/color":
         return styles.layout3;
 
       default:
@@ -64,13 +64,17 @@ const Hero = () => {
     if (data.country.length == 2) {
       cleanData = data.country.toUpperCase();
     } else {
-      // edge case is 'Hong Kong' where its split into 2 words
+      // edge case is countries like 'Hong Kong' or 'Bosnia and Herzegovina' where its split into 2 or more words
       let cleaning = data.country.split(" ");
       cleaning = cleaning
-        .map(
-          (el) =>
-            el.charAt(0).toUpperCase() + el.substring(0).slice(1).toLowerCase()
-        )
+        .map((el) => {
+          if (el !== "and")
+            return (
+              el.charAt(0).toUpperCase() +
+              el.substring(0).slice(1).toLowerCase()
+            );
+          else return el;
+        })
         .join(" ");
       cleanData = cleaning;
     }
@@ -100,10 +104,8 @@ const Hero = () => {
 
   return (
     <div className={`${styles.hero} ${getLayout()}`}>
-      <div className="flex text-3xl text-white justify-between items-center w-full">
-        <h1 className="font-extrabold text-white">
-          Learn Something New Everyday!
-        </h1>
+      <div className="flex text-3xl  justify-between items-center w-full">
+        <h1 className="font-extrabold">Learn Something New Everyday!</h1>
         <button type="button" onClick={() => router.push("/")}>
           <i className="fa-solid fa-xmark duration-300 hover:scale-150 hover:text-red-600"></i>
         </button>

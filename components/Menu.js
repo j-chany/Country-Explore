@@ -3,7 +3,7 @@ import { useRouter } from "next/router";
 import styles from "../styles/home.module.css";
 
 const Menu = () => {
-  // create router object 
+  // create router object
   const router = useRouter();
 
   // on each buton click, redirect to the new route which will be passed in according to the button
@@ -23,22 +23,22 @@ const Menu = () => {
         </div>
         <div className="">
           <button
-            className="px-4 py-2 rounded-lg bg-gray-200 font-medium duration-300 hover:bg-gray-300 mr-5"
+            className="px-4 py-2 rounded-lg bg-slate-200 font-medium duration-300 hover:bg-gray-300 mr-5"
             onClick={() => handleClick("regular")}
           >
             Regular
           </button>
           <button
-            className="px-4 py-2 rounded-lg bg-gray-200 font-medium duration-300 hover:bg-gray-300 mr-5"
+            className="px-4 py-2 rounded-lg bg-orange-300 font-medium duration-300 hover:bg-orange-400 mr-5"
             onClick={() => handleClick("simple")}
           >
             Simple
           </button>
           <button
-            className="px-4 py-2 rounded-lg bg-gray-200 font-medium duration-300 hover:bg-gray-300 mr-5"
+            className="px-4 py-2 rounded-lg text-black bg-rose-400 font-medium duration-300 hover:bg-rose-500  mr-5"
             onClick={() => handleClick("compact")}
           >
-            Compact
+            Color
           </button>
         </div>
       </div>

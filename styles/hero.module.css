@@ -1,26 +1,47 @@
 
 .hero {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  /* justify-content: center; */
   background-color: white;
   box-shadow: 10px 5px 10px rgba(0, 0, 0, 0.1);
   border-radius: 1rem;
   padding: 2rem;
-  width:65%; 
-  height:80%;
   gap: 2rem; 
 }
 
 .layout1 {
   background-color: rgb(51, 51, 98);
+  color:white;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width:65%; 
+  height:80%;
 }
+
 
 .layout2 {
-  background-color: pink;
+  background-color: rgb(230, 230, 230);
+  color: black;
+  display: flex;
+  flex-direction: column;
+
+  width: 80%;
+  height: 500px;
+  margin: 0 auto;
 }
 
+
 .layout3 {
-  background-color: cyan;
+  background-color: rgb(246, 230, 58);
+  color: rgb(39, 117, 186);
+  display: flex;
+  flex-direction: column;
+  width:80%; 
+  height:75%;
 }
+ .layout3 form button {
+  background-color: rgb(58, 238, 35) !important;
+ }
+ .layout3 form  input{
+  background-color: rgb(169, 239, 255) !important;
+ }
+

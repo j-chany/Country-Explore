@@ -17,16 +17,17 @@ const InfoContainer = (props) => {
   };
   return (
     <>
-      <div></div>
-      <div className=" text-white text-xl gap-3 font-bold flex flex-col items-start w-full">
+      <div className="text-xl gap-3 font-bold flex flex-col items-start w-full">
         <p>Name : {name}</p>
-       
+
         <p>Unicode URL : {emojiU}</p>
         <p>Languages : {genLang()}</p>
-        <p>
-        <span className="text-9xl">{emoji}</span>
-        </p>
       </div>
+      <p className="flex ">
+        <span className="duratio:300 hover:scale-150 text-9xl">
+          {emoji}
+        </span>
+      </p>
     </>
   );
 };

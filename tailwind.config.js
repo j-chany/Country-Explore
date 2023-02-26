@@ -20,5 +20,7 @@ module.exports = {
       ...colors,
     },
   },
+  important: true,
+
   plugins: [],
 };
