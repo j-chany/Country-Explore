@@ -36,7 +36,7 @@ const Menu = () => {
           </button>
           <button
             className="px-4 py-2 rounded-lg text-black bg-rose-400 font-medium duration-300 hover:bg-rose-500  mr-5"
-            onClick={() => handleClick("compact")}
+            onClick={() => handleClick("color")}
           >
             Color
           </button>
