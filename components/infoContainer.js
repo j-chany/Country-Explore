@@ -1,7 +1,6 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import styles from "../styles/container.module.css";
 import { getLayout } from "@/service/utils";
-import States from "./states";
 
 const InfoContainer = (props) => {
   const { name, emoji, emojiU, languages, states } = props.queryData;
@@ -15,9 +14,8 @@ const InfoContainer = (props) => {
     }
     return list;
   };
-  const [stateMode, setStateMode] = useState(false);
   const [show, setShow] = useState(5);
-  const [pathname, setPathName] = useState(`${router.pathname}`);
+  const pathname = `${router.pathname}`;
   console.log(pathname);
   return (
     <>
@@ -72,7 +70,6 @@ const InfoContainer = (props) => {
             </div>
           )}
         </span>
-        {stateMode && <States states={genInfo(states, "states")} />}
         <p className="flex ">
           <span className="duratio:300 hover:scale-150 text-9xl">{emoji}</span>
         </p>
